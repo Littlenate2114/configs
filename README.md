@@ -1,5 +1,5 @@
 # config
-my desktop wm config
+my desktop config
 
 #dependencies
   -feh
