@@ -40,7 +40,7 @@ bindsym $mod+space exec /home/user/Documents/dev/electron/Linuxapp-linux-x64/Lin
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+j focus left
@@ -92,11 +92,17 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-# switch to workspace
-bindsym $mod+1 workspace " Internet"
-bindsym $mod+2 workspace " Editor"
-bindsym $mod+3 workspace " Music"
-bindsym $mod+4 workspace " Other"
+set $ws1 "1:"
+set $ws2 "2:"
+set $ws3 "3:"
+set $ws4 "4:"
+
+
+# switch to space
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
@@ -105,10 +111,10 @@ bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace " Internet"
-bindsym $mod+Shift+2 move container to workspace " Editor"
-bindsym $mod+Shift+3 move container to workspace " Music"
-bindsym $mod+Shift+4 move container to workspace " Other"
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
@@ -116,9 +122,12 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
+for_window [class="Spotify"] move to workspace $ws3
+assign [class="Google-chrome"] $ws1
+
+
 bindsym $mod+Shift+l exec /home/user/Documents/exit.sh
-gaps inner 0
-gaps outer 0
+
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -153,10 +162,12 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+gaps inner 0
+gaps outer 5
 
-#new_window pixel 3
+new_window pixel 1
 
-client.focused  #000000 #1d1f21 #FFFFFF #000000
+client.focused  #000000 #ffd896 #FFFFFF #000000
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -165,18 +176,20 @@ bar {
         status_command /home/user/Documents/bar.sh
         i3bar_command i3bar -t
         colors {
-          background "#1d1f2100"
-          statusline #FFFFFF #that neon blue
+          background "#28282800"
+          statusline #ffd896 #that neon blue
           separator #666666
-          focused_workspace  #FFFFFF00 #1d1f2100 #FFFFFF
-          active_workspace   #1d1f2100 #1d1f2100 #ffffff90
-          inactive_workspace #1d1f2100 #1d1f2100 #FFFFFF90
-          urgent_workspace   #2f343a #900000 #ffffff
+          focused_workspace  #28282800 #28282800 #ffd896
+          active_workspace   #28282800 #28282800 #ffffff90
+          inactive_workspace #28282800 #28282800 #FFFFFF90
+          urgent_workspace   #28282800 #28282800 #ffffff90
         }
 }
 
 exec_always xrandr --output DP-1 --off --output HDMI-2 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-1 --mode 1920x1080 --pos 1920x0 --rotate normal
 exec_always compton -f
 exec_always feh --bg-scale /home/user/Downloads/wall.jpg
+exec spotify
 
 for_window [class="electron" instance="electron"] floating enable
+#for_window [class="test" instance="test"] floating enable
