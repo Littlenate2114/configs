@@ -1,0 +1,2 @@
+cd ~/Documents/dev/electron
+rm -rf Linuxapp-linux-x64/
