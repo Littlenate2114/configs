@@ -30,10 +30,10 @@ font pango:monospace 10.5
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec gnome-terminal
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+w kill
 
 # start dmenu (a program launcher)
 bindsym $mod+space exec /home/user/Documents/dev/electron/Linuxapp-linux-x64/Linuxapp
@@ -70,9 +70,9 @@ bindsym $mod+Shift+Right move right
 bindsym $mod+h split h
 
 bindsym $mod+p gaps inner current plus 5
-bindsym $mod+Shift+p gaps inner current minus 5
+bindsym $mod+shift+p gaps inner current minus 5
 
-bindsym $mod+Shift+o exec killall i3bar 
+bindsym $mod+Shift+o exec killall i3bar
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -82,7 +82,7 @@ bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+bindsym $mod+Shift+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -99,35 +99,34 @@ bindsym $mod+a focus parent
 
 
 # switch to space
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace Chrome
+bindsym $mod+2 workspace Atom
+bindsym $mod+4 workspace Spotify
+bindsym $mod+3 workspace Shell
+bindsym $mod+5 workspace Skype
+bindsym $mod+6 workspace Gimp
+bindsym $mod+7 workspace 6
+bindsym $mod+8 workspace 7
+bindsym $mod+9 workspace 8
+bindsym $mod+0 workspace 9
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to workspace Chrome
+bindsym $mod+Shift+2 move container to workspace Atom
+bindsym $mod+Shift+4 move container to workspace Spotify
+bindsym $mod+Shift+3 move container to workspace Shell
+bindsym $mod+Shift+5 move container to workspace Skype
+bindsym $mod+Shift+6 move container to workspace Gimp
+bindsym $mod+Shift+7 move container to workspace 6
+bindsym $mod+Shift+8 move container to workspace 7
+bindsym $mod+Shift+9 move container to workspace 8
+bindsym $mod+Shift+0 move container to workspace 9
 
-for_window [class="Spotify"] move to workspace 3
-assign [class="Google-chrome"] workspace 1
-assign [class="skypeforlinux"] workspace 4
-assign [class="Gimp"] workspace 5
-
-bindsym $mod+Shift+l exec /home/user/Documents/exit.sh
+assign [class="Google-chrome"] workspace Chrome
+assign [class="skypeforlinux"] workspace Skype
+assign [class="Gimp"] workspace Gimp
+for_window [class="Spotify"] move to workspace Spotify
+bindsym $mod+Shift+l exec lock
 
 
 # reload the configuration file
@@ -163,20 +162,36 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-gaps inner 10
+gaps inner 5
 gaps outer 0
 
-new_window pixel 3
+new_window pixel 1
 
-client.focused  #ffffff #2d293350 #ffffff #ffffff
+exec /usr/libexec/gnome-settings-daemon
 
-exec_always MONITOR=HDMI-2 polybar example &
-exec_always MONITOR=HDMI-1 polybar example &
+client.focused  #000000 #000000 #ffffff #000000
 
 exec_always xrandr --output DP-1 --off --output HDMI-2 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-1 --mode 1920x1080 --pos 1920x0 --rotate normal
 exec_always compton -f
-exec_always feh --bg-scale /home/user/Downloads/epicwalls/wall.jpg
+exec_always feh --bg-scale /home/user/Downloads/walls/wall.jpg
 exec spotify
 
-for_window [class="electron" instance="electron"] floating enable
-#for_window [class="test" instance="test"] floating enable
+bindsym $mod+Shift+h bar mode toggle
+bindsym $mod+t exec thunar
+
+bar {
+  position top
+  height 15
+  font pango:monospace 8.5
+  status_command ~/Documents/scripts/time.sh
+  colors{
+  background #222222
+         statusline #eeeeee
+         separator #666666
+         #                  border  backgr. text
+         focused_workspace  #222233 #222233 #ffffff
+         active_workspace   #222233 #222233 #ffffff
+         inactive_workspace #222233 #222233 #888888
+         urgent_workspace   #222233 #222233 #ffffff
+  }
+}
