@@ -1,5 +1,5 @@
 [playlist]
-NumberOfEntries=11
+NumberOfEntries=12
 
 File1=http://m.dnbfm.ru:8000/play
 Title1=DNB FM
@@ -34,6 +34,9 @@ File10=http://stream.soundstorm-radio.com:8000/
 Title11=16Bit FM Cafe
 File11=http://16bitfm.com:8000/cafe_mp3_192
 
+Title12=Heart Radio Uk
+File12=http://vis.media-ice.musicradio.com/HeartUK
+
 
 Length1=-1
 Length2=-1
@@ -46,5 +49,5 @@ Length8=-1
 Length9=-1
 Length10=-1
 Length11=-1
+Length12=-1
 Version=2
-
