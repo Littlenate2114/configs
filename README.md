@@ -11,7 +11,7 @@ download this repo and add radio-stations.pls to ~/Music
     $ wget https://raw.githubusercontent.com/Littlenate2114/configs/master/radio-stations.pls
     $ sudo pacman -S moc
 
-then listen and enjoy to the 11 stations :
+then listen and enjoy to the 12 stations :
 1. DNB FM
 2. Dance UK Radio
 3. Soma FM
@@ -23,6 +23,7 @@ then listen and enjoy to the 11 stations :
 9. Ambient Radio
 10. SandStorm Radio
 11. 16Bit FM
+12. Heart Radio UK
 
 ### Start Up Script
 
