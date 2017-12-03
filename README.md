@@ -24,5 +24,11 @@ then listen and enjoy to the 11 stations :
 10. SandStorm Radio
 11. 16Bit FM
 
-#### more soon...
+#### Start Up Script
+Download the script and place in /usr/bin/
+    $ cd /usr/bin/
+    $ sudo wget https://raw.githubusercontent.com/Littlenate2114/configs/master/start
+Add start to xsessions .desktop
+
+### More Comming Soon
 
