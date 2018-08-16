@@ -22,7 +22,6 @@ then listen and enjoy to the 12 stations :
 8. NOISE FM
 9. Ambient Radio
 10. SandStorm Radio
-11. 16Bit FM
 12. Heart Radio UK
 
 ### Start Up Script
