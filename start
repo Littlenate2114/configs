@@ -1,4 +1,3 @@
-#!/bin/bash
 dwm & compton -f & xrandr --output HDMI2 --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI1 --mode 1920x1080 --pos 3840x0 --rotate normal --output VIRTUAL1 --off --output DP1 --off & feh --bg-scale ~/Downloads/walls/wall.jpg &
 while(true)do :
     xsetroot -name "$(echo `mocp -Q "%artist %song |"` `date +%r` "|" `whoami` || exit 1)"
